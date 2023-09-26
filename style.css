@@ -1,0 +1,226 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+:root {
+  font-family: "Lexend Exa", sans-serif;
+  font-size: 14px;
+  --bg-color: #222327;
+  --text-color: #000;
+  --span-color: #ff6347;
+  --white-color: #fff;
+  --radio-color: #f4a460;
+  --radiobg-color: #40d3dc;
+  --page-color: #c42632;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--text-color);
+}
+
+header {
+  height: auto;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.9);
+  transition: all 0.5s ease;
+}
+
+/* Sayfa aşağıya doğru kaydırıldığında header elementine eklenir*/
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100; /* Header alanının ön planda kalmasını sağlar */
+  transition: 0.5s;
+}
+/* Sayfa aşağıya doğru kaydırıldığında nav elementine eklenir*/
+.sticky-nav {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.8rem 8%;
+}
+/* Sayfa aşağıya doğru kaydırıldığında main elementine eklenir*/
+.sticky-main {
+  padding-top: 152px;
+}
+
+.topbar {
+  background: var(--text-color);
+  color: var(--white-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem;
+  font-size: 11px;
+}
+
+.topbar > i {
+  font-size: 1.1rem;
+  padding: 0.1rem 0 0 0.8rem;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 8%;
+}
+
+nav > ul {
+  display: flex;
+  gap: 2rem;
+}
+
+nav > ul li a {
+  color: var(--text-color);
+  font-weight: 600;
+}
+nav > ul li a span {
+  color: var(--span-color);
+}
+#man-menu {
+  /* display: none; */
+}
+
+.open{
+  display: flex !important;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  background: var(--white-color);
+  border-top: 1px solid var(--bg-color);
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+}
+.dropdown > ul {
+  display: flex;
+  gap: 10rem;
+  padding: 2rem;
+}
+.dropdown > ul li a:not(.headline) {
+  font-size: .9rem;
+  font-weight: 300;
+  line-height: 1.7rem;
+}
+.headline {
+  display: flex;
+  padding-bottom: 1rem;
+  font-weight: 400;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  font-size: 1.3rem;
+}
+
+.menu a i {
+  color: var(--bg-color);
+}
+
+.search-box {
+  position: relative;
+  /* display: inline-block; */
+}
+
+.search-box input[type="text"] {
+  border: none;
+  background: #d3d3d3;
+  line-height: 1.7rem;
+  padding: 0.2rem 3rem 0.2rem 1rem;
+  border-radius: 0.2rem;
+  outline: none;
+}
+
+a#searchIcon,
+a#closeIcon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  cursor: pointer;
+}
+
+/* slider alanı */
+
+.slider {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.slides {
+  white-space: nowrap; /* Resimlerin yatay olarak sıralanmasını sağlar */
+  transition: transform 2s ease; /* Yumuşak bir yatay geçiş efekti sağlar */
+  font-size: 0; /* Inline-block'un bıraktığı boşluğu kaldırır */
+}
+.slide {
+  display: inline-block; /* Resimlerin yan yana gelmesini sağlar */
+  width: 100%;
+}
+
+.slide img {
+  object-fit: cover; /* Resimlerin kutunun içine tam olarak sığmasını sağlar */
+  height: auto;
+  width: 100%;
+}
+
+.slider-controls {
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+  position: absolute;
+  bottom: 5%;
+  left: 45%;
+}
+
+.slider-controls input[type="radio"] {
+  display: none;
+}
+
+.slider-controls label {
+  background: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 3px solid var(--radiobg-color);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 1s ease;
+}
+
+.btn {
+  background: none;
+  border: none;
+  color: var(--white-color);
+  font-size: 4rem;
+  position: absolute;
+  top: 50%;
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+.btn:hover {
+  color: var(--page-color);
+}
+
+#prev-btn {
+  left: 3rem;
+}
+
+#next-btn {
+  right: 3rem;
+}

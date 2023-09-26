@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script src="main.js"></script>
+</head>
+
+<body>
+
+  <header>
+    <div class="topbar">10% DISCOUNT FOR SEPTEMBER
+      <i class="fa-solid fa-angle-down"></i>
+    </div>
+
+    <nav>
+      <a href="index.html"><img src="img/borayas_logo.png" alt="no pic"></a>
+
+      <ul>
+        <li><a href="#" data-menu="man" id="man-menu">MAN</a>
+          <div class="dropdown">
+            <ul>
+              <li><a href="#" class="headline">Öne Çıkanlar</a>
+                <ul>
+                  <li><a href="#">Yeni Sezon</a></li>
+                  <li><a href="#">Kışlık Giyim</a></li>
+                  <li><a href="#">En Çok Satanlar</a></li>
+                </ul>
+              </li>
+              <li><a href="#" class="headline">Ayakkabı</a>
+                <ul>
+                  <li><a href="#">Günlük</a></li>
+                  <li><a href="#">Koşu</a></li>
+                  <li><a href="#">Futbol</a></li>
+                  <li><a href="#">Basketbol</a></li>
+                  <li><a href="#">Kaykay</a></li>
+                  <li><a href="#">Tenis</a></li>
+                  <li><a href="#">Sandalet</a></li>
+                  <li><a href="#">Terlik</a></li>
+                </ul>
+              </li>
+              <li><a href="#" class="headline">Giyim</a>
+                <ul>
+                  <li><a href="#">Tshirt</a></li>
+                  <li><a href="#">Sweatshirt</a></li>
+                  <li><a href="#">Kapüşonlu Üst</a></li>
+                  <li><a href="#">Eşofman</a></li>
+                  <li><a href="#">Mont</a></li>
+                  <li><a href="#">Forma</a></li>
+                  <li><a href="#">Şort</a></li>
+                  <li><a href="#">Mayo</a></li>
+                </ul>
+              </li>
+              <li><a href="#" class="headline">Aksesuar</a>
+                <ul>
+                  <li><a href="#">Bel Çantaları</a></li>
+                  <li><a href="#">Sırt Çantaları</a></li>
+                  <li><a href="#">Şapka ve Bere</a></li>
+                  <li><a href="#">Eldiven</a></li>
+                  <li><a href="#">Atkı ve Boyunluk</a></li>
+                  <li><a href="#">Çorap</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        <li><a href="#" data-menu="women" id="women-menu" >WOMEN</a>
+          <div class="dropdown">
+            <ul>
+              <li><a href="#" class="headline">Öne Çıkanlar</a>
+                <ul>
+                  <li><a href="#">Yeni Sezon</a></li>
+                  <li><a href="#">Kışlık Giyim</a></li>
+                  <li><a href="#">En Çok Satanlar</a></li>
+                  <li><a href="#">Borayas Special</a></li>
+
+                </ul>
+              </li>
+              <li><a href="#" class="headline">Ayakkabı</a>
+                <ul>
+                  <li><a href="#">Günlük</a></li>
+                  <li><a href="#">Koşu</a></li>
+                  <li><a href="#">Futbol</a></li>
+                  <li><a href="#">Dans</a></li>
+                  <li><a href="#">Antrenman ve Spor Salonu</a></li>
+                  <li><a href="#">Kaykay</a></li>
+                  <li><a href="#">Tenis</a></li>
+                  <li><a href="#">Sandalet</a></li>
+                  <li><a href="#">Terlik</a></li>
+                </ul>
+              </li>
+              <li><a href="#" class="headline">Giyim</a>
+                <ul>
+                  <li><a href="#">Tshirt</a></li>
+                  <li><a href="#">Sweatshirt</a></li>
+                  <li><a href="#">Kapüşonlu Üst</a></li>
+                  <li><a href="#">Eşofman</a></li>
+                  <li><a href="#">Mont</a></li>
+                  <li><a href="#">Sporcu Sütyeni</a></li>
+                  <li><a href="#">Elbise</a></li>
+                  <li><a href="#">Etek</a></li>
+                  <li><a href="#">Tayt</a></li>
+                  <li><a href="#">Şort</a></li>
+                  <li><a href="#">Bikini</a></li>
+                </ul>
+              </li>
+              <li><a href="#" class="headline">Aksesuar</a>
+                <ul>
+                  <li><a href="#">Bel Çantaları</a></li>
+                  <li><a href="#">Sırt Çantaları</a></li>
+                  <li><a href="#">Şapka ve Bere</a></li>
+                  <li><a href="#">Şaç Bandı</a></li>
+                  <li><a href="#">Eldiven</a></li>
+                  <li><a href="#">Atkı ve Boyunluk</a></li>
+                  <li><a href="#">Çorap</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li><a href="#" data-menu="kid" id="kid-menu">WONDERKID</a></li>
+        <li><a href="#" data-menu="outlet" id="outlet-menu"><span>OUTLET</span></a></li>
+      </ul>
+
+      <div class="menu">
+        <div class="search-box">
+          <input type="text" name="searchInput" id="searchInput" placeholder="Ara">
+          <a href="#" id="searchIcon"><i class="fa-solid fa-magnifying-glass"></i></a>
+          <a href="#" id="closeIcon"><i class="fa-solid fa-xmark"></i></i></a>
+        </div>
+        <a href="#"><i class="fa-regular fa-user"></i></a>
+        <a href="#"><i class="fa-regular fa-heart"></i></a>
+        <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <div class="slider">
+      <div class="slides">
+        <div class="slide"><img src="img/banner-1920x784.png" alt="Pic 1"></div>
+        <div class="slide"><img src="img/lasse-1920x784.png" alt="Pic 2"></div>
+        <div class="slide"><img src="img/hermes-1920x784.png" alt="Pic 3"></div>
+      </div>
+
+      <button id="prev-btn" class="btn"><i class="fa-solid fa-chevron-left"></i></button>
+      <button id="next-btn" class="btn"><i class="fa-solid fa-chevron-right"></i></button>
+
+      <div class="slider-controls">
+        <input type="radio" name="slider-radio" id="radio1">
+        <input type="radio" name="slider-radio" id="radio2">
+        <input type="radio" name="slider-radio" id="radio3">
+        <label for="radio1"></label>
+        <label for="radio2"></label>
+        <label for="radio3"></label>
+      </div>
+    </div>
+
+    <p style="width: 20%;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique labore est sed tempore
+      omnis tempora, a quas
+      ipsa maxime eum, beatae ullam nisi aspernatur natus deserunt, molestias dolorum sequi dolorem quidem fugit. Odit,
+      corporis? Recusandae pariatur tempora architecto officia enim sequi et quibusdam possimus vel omnis commodi quam
+      quia dolore eos minima sint deleniti autem, assumenda facere porro animi ullam quasi beatae vero. Delectus
+      inventore rerum distinctio molestiae impedit maxime exercitationem sapiente reprehenderit suscipit quas odio dicta
+      esse architecto ea hic eius eveniet provident unde vel facilis, iure soluta voluptates. Debitis, numquam. Ratione,
+      iusto delectus nam, dolor culpa odit cum mollitia repellendus aperiam quos, cumque fugit facere consequuntur atque
+      accusantium molestiae eos laboriosam pariatur at animi quia accusamus cupiditate. Dolor expedita eaque, quia
+      corporis non saepe quasi in sed! Voluptatem aliquam nisi fugiat ut veniam libero optio rem sequi iusto provident
+      numquam repellendus eius corrupti laborum, animi et quis blanditiis est odit minima excepturi maiores deleniti.
+      Nobis exercitationem rerum facere, eius est reprehenderit modi, quas pariatur fugit et voluptate excepturi dolorem
+      obcaecati iusto quasi totam consequuntur illum id eos velit debitis. Consectetur nihil nam modi, minus totam,
+      porro eaque voluptate culpa autem voluptatibus iste architecto distinctio qui, esse reprehenderit tenetur.</p>
+
+
+
+  </main>
+
+
+</body>
+
+</html>
