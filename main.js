@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
   // Sticky Header Alanı
   var header = $("header");
   var nav = $("nav");
@@ -18,9 +19,7 @@ $(document).ready(function () {
 
   // Açılır liste
 
-  // const man = $("#man-menu");
   const navbar = $("nav ul li");
-  // const dropdown = $(".dropdown");
 
   navbar.hover(
     function () {

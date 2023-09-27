@@ -4,6 +4,7 @@
   font-family: "Lexend Exa", sans-serif;
   font-size: 14px;
   --bg-color: #222327;
+  --bar-color: linear-gradient(to right,black, #1c1c1c,#363636,#4f4f4f,#696969,#828282,#9c9c9c,#b5b5b5,#cfcfcf);
   --text-color: #000;
   --span-color: #ff6347;
   --white-color: #fff;
@@ -51,7 +52,7 @@ header {
 }
 
 .topbar {
-  background: var(--text-color);
+  background: var(--bar-color);
   color: var(--white-color);
   display: flex;
   align-items: center;
@@ -59,13 +60,48 @@ header {
   padding: 0.8rem;
   font-size: 11px;
 }
-
 .topbar > i {
   font-size: 1.1rem;
   padding: 0.1rem 0 0 0.8rem;
+  cursor: pointer;
+}
+.dropdown-topbar{
+  display: flex;
+  gap: 5rem;
+  justify-content: center;
+  padding: 4rem 0;
+}
+.dropdown-topbar div{
+  width: 20%;
+  font-size: .8rem;
+}
+.dropdown-topbar div p{
+  padding: 1rem 0 2rem 0;
+}
+.dropdown-topbar div a{
+  color: var(--white-color);
+  text-decoration: underline;
+} 
+
+.helpbar{
+  position: absolute;
+  top: 0;
+  right: 8%;
+  padding: 1rem 0;
+  
+}
+.helpbar > ul{
+  display: flex;
+  gap:1.5rem;
+  font-size: .8rem ;
+  font-weight: 300;
+}
+.helpbar > ul li{
+
 }
 
 nav {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -107,7 +143,7 @@ nav > ul li a span {
 .dropdown > ul {
   display: flex;
   gap: 10rem;
-  padding: 2rem;
+  padding: 3rem;
 }
 .dropdown > ul li a:not(.headline) {
   font-size: .9rem;
