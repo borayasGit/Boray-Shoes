@@ -4,7 +4,7 @@
   font-family: "Lexend Exa", sans-serif;
   font-size: 14px;
   --bg-color: #222327;
-  --bar-color: linear-gradient(to right,black, #1c1c1c,#363636,#4f4f4f,#696969,#828282,#9c9c9c,#b5b5b5,#cfcfcf);
+  --bar-color: linear-gradient(to left, rgba(0, 0, 0, 0.95) 90%, white);
   --text-color: #000;
   --span-color: #ff6347;
   --white-color: #fff;
@@ -44,32 +44,37 @@ header {
 /* Sayfa aşağıya doğru kaydırıldığında nav elementine eklenir*/
 .sticky-nav {
   background: rgba(255, 255, 255, 0.9);
-  padding: 0.8rem 8%;
+  /* padding: 0.8rem 8%; */
 }
 /* Sayfa aşağıya doğru kaydırıldığında main elementine eklenir*/
 .sticky-main {
-  padding-top: 152px;
+  padding-top: 137px;
 }
 
 .topbar {
   background: var(--bar-color);
   color: var(--white-color);
+
+}
+.topbar-box{
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.8rem;
+  padding: .8rem;
   font-size: 11px;
+  cursor: default;
 }
-.topbar > i {
+.topbar-box > a{
+  color: var(--white-color);
   font-size: 1.1rem;
-  padding: 0.1rem 0 0 0.8rem;
-  cursor: pointer;
+  padding: 0.2rem 0 0 0.6rem;
 }
 .dropdown-topbar{
+  position: relative;
   display: flex;
   gap: 5rem;
   justify-content: center;
-  padding: 4rem 0;
+  padding: 2rem 0 4rem 0;
 }
 .dropdown-topbar div{
   width: 20%;
@@ -82,12 +87,22 @@ header {
   color: var(--white-color);
   text-decoration: underline;
 } 
+#closeTopbarBtn{
+ background: none;
+ border: none;
+ color: var(--white-color);
+ font-size: 3rem;
+ position: absolute;
+ top: 16%;
+ right: 4%;
+ cursor: pointer;
+}
 
 .helpbar{
   position: absolute;
   top: 0;
   right: 8%;
-  padding: 1rem 0;
+  padding: 1.5rem 0;
   
 }
 .helpbar > ul{
@@ -96,16 +111,17 @@ header {
   font-size: .8rem ;
   font-weight: 300;
 }
-.helpbar > ul li{
 
-}
-
-nav {
+nav{
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
-  padding: 2rem 8%;
+  padding: 0rem 8% 1.5rem 8%;
+}
+
+nav > a img{
+  padding:1.5rem 0 0 0;
 }
 
 nav > ul {
@@ -119,9 +135,6 @@ nav > ul li a {
 }
 nav > ul li a span {
   color: var(--span-color);
-}
-#man-menu {
-  /* display: none; */
 }
 
 .open{
@@ -169,7 +182,6 @@ nav > ul li a span {
 
 .search-box {
   position: relative;
-  /* display: inline-block; */
 }
 
 .search-box input[type="text"] {
@@ -239,7 +251,7 @@ a#closeIcon {
   transition: 1s ease;
 }
 
-.btn {
+.slider-btn {
   background: none;
   border: none;
   color: var(--white-color);
@@ -249,7 +261,7 @@ a#closeIcon {
   cursor: pointer;
   transition: 0.5s ease;
 }
-.btn:hover {
+.slider-btn:hover {
   color: var(--page-color);
 }
 

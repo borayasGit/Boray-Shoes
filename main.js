@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
   // Sticky Header Alanı
   var header = $("header");
   var nav = $("nav");
@@ -15,6 +14,35 @@ $(document).ready(function () {
       nav.removeClass("sticky-nav");
       main.removeClass("sticky-main");
     }
+  });
+
+  // Açılır TopBar
+
+  const topbarBox = $(".topbar-box");
+  const dropdownTopbar = $(".dropdown-topbar");
+  const topbarIcon = $("i.fa-angle-down");
+
+  dropdownTopbar.hide();
+  topbarIcon.click(function (e) {
+    e.preventDefault();
+    if (!dropdownTopbar.is(":visible")) {
+      topbarBox.css({
+        visibility: "hidden",
+        transform: "translateX(-60%)",
+      });
+      dropdownTopbar.slideDown(700);
+    }
+  });
+
+  const closeTopbarBtn = $("#closeTopbarBtn");
+  closeTopbarBtn.click(function () {
+    dropdownTopbar.slideUp(700, function () {
+      topbarBox.css({
+        visibility: "visible",
+        transform: "translateX(0)",
+        transition: "transform .6s ease",
+      });
+    });
   });
 
   // Açılır liste
@@ -44,7 +72,7 @@ $(document).ready(function () {
     }
   );
 
-  // Açılır Kapanır SearchBox
+  // Açılır SearchBox
 
   const searchIcon = $("#searchIcon");
   const closeIcon = $("#closeIcon");
@@ -129,7 +157,7 @@ $(document).ready(function () {
   const slide = $(".slide");
   const radioButtons = $("input[name='slider-radio']");
   const labels = $(".slider-controls label");
-  const buttons = $(".btn");
+  const buttons = $(".slider-btn");
   var currentSlide = 0;
 
   labels.eq(currentSlide).css("background", "var(--radiobg-color)");

@@ -17,8 +17,11 @@
 <body>
 
   <header>
-    <div class="topbar">10% DISCOUNT FOR SEPTEMBER
-      <i class="fa-solid fa-angle-down"></i>
+    <div class="topbar">
+      <div class="topbar-box">
+        <span>10% DISCOUNT FOR SEPTEMBER</span>
+        <a href="#"><i class="fa-solid fa-angle-down"></i></a>
+      </div>
       <div class="dropdown-topbar">
         <div class="card">
           <h3>Lorem</h3>
@@ -44,6 +47,7 @@
             quos?</p>
           <a href="#">more...</a>
         </div>
+        <button id="closeTopbarBtn"><i class="fa-solid fa-xmark"></i></button>
       </div>
     </div>
 
@@ -57,7 +61,7 @@
         </ul>
       </div>
 
-      <a href="index.html"><img src="img/borayas_logo.png" alt="no pic"></a>
+      <a id="logo" href="index.html"><img src="img/borayas_logo.png" alt="no pic"></a>
 
       <ul>
         <li><a href="#" data-menu="man" id="man-menu">MAN</a>
@@ -188,8 +192,8 @@
         <div class="slide"><img src="img/hermes-1920x784.png" alt="Pic 3"></div>
       </div>
 
-      <button id="prev-btn" class="btn"><i class="fa-solid fa-chevron-left"></i></button>
-      <button id="next-btn" class="btn"><i class="fa-solid fa-chevron-right"></i></button>
+      <button id="prev-btn" class="slider-btn"><i class="fa-solid fa-chevron-left"></i></button>
+      <button id="next-btn" class="slider-btn"><i class="fa-solid fa-chevron-right"></i></button>
 
       <div class="slider-controls">
         <input type="radio" name="slider-radio" id="radio1">
@@ -219,8 +223,5 @@
 
 
   </main>
-
-
 </body>
-
 </html>
