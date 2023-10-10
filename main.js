@@ -1,4 +1,61 @@
 $(document).ready(function () {
+  // Menü verilerini json dosyasından çekme işlemi
+
+  var dbUrl = "http://localhost:3000/menu";
+  $.ajax({
+    method: "GET",
+    url: dbUrl,
+    dataType: "json",
+  }).done(function (data) {
+    const navbarAnchor = $("#menu-items li a");
+
+    navbarAnchor.each(function (index, element) {
+      var menuId = $(element).data("menu");
+      var menuIdSelector = $(`#${menuId}`);
+      const dropdownContainer = menuIdSelector.siblings(".dropdown-container");
+
+      // JSON verileri ile eşleşen menü verilerini alın
+      var dropdownData = data.find(function (item) {
+        return item.hasOwnProperty(menuId);
+      });
+
+      var dropdownContent = createDropdownContent(dropdownData[menuId]);
+
+      //dropdownContainer.html(""); // Önceki içeriği temizle
+      dropdownContainer.html(dropdownContent);
+    });
+  });
+
+  function createDropdownContent(data) {
+    var content = "<div class='dropdown'><ul>";
+
+    for (var key in data) {
+      content += "<li><a href='#' class='headline'>" + key + "</a><ul>";
+
+      data[key].forEach(function (item) {
+        content += "<li><a href='#'>" + item + "</a></li>";
+      });
+
+      content += "</ul></li>";
+    }
+
+    content += "</ul></div>";
+    return content;
+  }
+  //hover
+  const navbar = $("#menu-items li a");
+  navbar.mouseover(function () {
+    var menuId = $(this).data("menu");
+    var menuIdSelector = $(`#${menuId}`);
+    const dropdownContainer = menuIdSelector.siblings(".dropdown-container");
+    dropdownContainer.addClass("open");
+  });
+  const headerAndNav = $("header, nav ul li");
+  headerAndNav.mouseleave(function () {
+    const dropdownContainers = $(".dropdown-container");
+    dropdownContainers.removeClass("open");
+  });
+
   // Sticky Header Alanı
   var header = $("header");
   var nav = $("nav");
@@ -18,12 +75,13 @@ $(document).ready(function () {
 
   // Açılır TopBar
 
+  const topbar = $(".topbar");
   const topbarBox = $(".topbar-box");
   const dropdownTopbar = $(".dropdown-topbar");
   const topbarIcon = $("i.fa-angle-down");
 
   dropdownTopbar.hide();
-  topbarIcon.click(function (e) {
+  topbar.click(function (e) {
     e.preventDefault();
     if (!dropdownTopbar.is(":visible")) {
       topbarBox.css({
@@ -45,32 +103,16 @@ $(document).ready(function () {
     });
   });
 
-  // Açılır liste
-
-  const navbar = $("nav ul li");
-
-  navbar.hover(
-    function () {
-      const anchor = $(this).find("a");
-      const menuID = anchor.attr("id");
-      const subMenu = $(`#${menuID}`);
-      const subMenuDiv = subMenu.siblings(".dropdown");
-      // TODO:DÜZENLEME GEREKLİ
-      if (menuID.length > 0) {
-        subMenuDiv.addClass("open");
-      }
-    },
-    function () {
-      const anchor = $(this).find("a");
-      const menuID = anchor.attr("id");
-      const subMenu = $(`#${menuID}`);
-      const subMenuDiv = subMenu.siblings(".dropdown");
-
-      if (menuID.length > 0) {
-        subMenuDiv.removeClass("open");
-      }
+  // Topbar dışında bir alana tıklanırsa topbar'ı kapat
+  $(window).mouseup(function (e) {
+    if (
+      dropdownTopbar.is(":visible") &&
+      !topbar.is(e.target) &&
+      topbar.has(e.target).length === 0
+    ) {
+      closeTopbarBtn.click();
     }
-  );
+  });
 
   // Açılır SearchBox
 
@@ -82,13 +124,14 @@ $(document).ready(function () {
   searchInput.hide();
   closeIcon.hide();
 
-  searchIcon.click(function () {
+  searchIcon.click(function (e) {
+    e.preventDefault();
     if (!isOpen) {
       searchIcon.hide();
       searchInput.animate(
         {
           width: "toggle",
-          paddingRight: "toggle",
+          padding: "toggle",
         },
         400
       );
@@ -96,13 +139,14 @@ $(document).ready(function () {
     }
     isOpen = true;
   });
-  closeIcon.click(function () {
+  closeIcon.click(function (e) {
+    e.preventDefault();
     if (isOpen) {
       searchIcon.show();
       searchInput.animate(
         {
           width: "toggle",
-          paddingRight: "toggle",
+          padding: "toggle",
         },
         400,
         function () {
@@ -162,16 +206,21 @@ $(document).ready(function () {
 
   labels.eq(currentSlide).css("background", "var(--radiobg-color)");
 
+  //Slider düğmelerine tıklandığında kaydırma
   radioButtons.change(function () {
     if (this.checked) {
       var selectedIndex = radioButtons.index(this);
       labels.css("background", "none");
-      labels.eq(selectedIndex).css("background", "var(--radiobg-color)");
+      const colors = ["var(--radiobg-color)", "var(--bg-color)", "var(--grey)"];
+      labels.css("border", `3px solid ${colors[selectedIndex]}`);
+      labels.eq(selectedIndex).css("background", colors[selectedIndex]);
 
       slides.css("transform", "translateX(-" + selectedIndex * 100 + "%)");
+      currentSlide = selectedIndex;
     }
   });
 
+  //Slider oklarına tıklandığında kaydırma
   buttons.click(function (e) {
     e.preventDefault();
     // "prev-btn" düğmesine tıklanırsa bir önceki slayta geçiş yap
@@ -179,7 +228,7 @@ $(document).ready(function () {
       if (currentSlide > 0) {
         currentSlide = currentSlide - 1;
       } else {
-        currentSlide = 0;
+        currentSlide = 2;
       }
     }
     // "next-btn" düğmesine tıklanırsa bir sonraki slayta geçiş yap
@@ -192,5 +241,48 @@ $(document).ready(function () {
     }
     // Seçilen slaytı göstermek için transform işlemini uygula
     slides.css("transform", "translateX(-" + currentSlide * 100 + "%)");
+    // Radio düğmesini güncelle
+    radioButtons.eq(currentSlide).prop("checked", true);
+    // Seçili radio düğmesi haricindekilerin arka planını kaldır
+    labels.css("background", "none");
+    // Seçili radio düğmesinin arka planına ve çerçevesine uygun rengi ver
+    const colors = ["var(--radiobg-color)", "var(--bg-color)", "var(--grey)"];
+    labels.css("border", `3px solid ${colors[currentSlide]}`);
+    labels.eq(currentSlide).css("background", colors[currentSlide]);
   });
+
+  const sneakerSliderButtons = $(".sneaker-slider-btn");
+  const sneakerCards = $(".sneaker-card");
+  const slidePercentage = 100;
+  const cardCount = sneakerCards.length;
+  let currentCardIndex = 0;
+
+  sneakerSliderButtons.click(function (e) {
+    e.preventDefault();
+
+    if ($(this).attr("id") == "sneakerBtnNext") {
+      currentCardIndex = (currentCardIndex + 1) % (cardCount - 2);
+      // console.log("NextBtn Index: " + currentCardIndex);
+    } else if ($(this).attr("id") == "sneakerBtnPrev") {
+      currentCardIndex =
+        (currentCardIndex - 1 + (cardCount - 2)) % (cardCount - 2);
+      // console.log("PrevBtn Index: " + currentCardIndex);
+    }
+
+    const translateXValue = -currentCardIndex * slidePercentage;
+    sneakerCards.css("transform", `translateX(${translateXValue}%)`);
+  });
+  const anadiv = $(".sneaker-cards");
+  const div1 = $(".sneaker-card:nth-child(2)");
+  const div3 = $(".sneaker-card:nth-child(2)");
+  const distance = div1.offset().left - anadiv.offset().left;
+  // console.log(div1.position().left);
+  console.log("İlk kartın mesafesi: " + distance + " px");
+
+// Ana div'in sağ kenarının konumu
+const anadivRight = anadiv.offset().left + anadiv.outerWidth();
+
+// Üçüncü kartın sağ kenarının konumu
+const div3Right = div3.offset().left + div3.outerWidth();
+console.log("Üçüncü kartın mesafesi: " + (anadivRight - div3Right) + " px");
 });

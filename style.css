@@ -11,6 +11,7 @@
   --radio-color: #f4a460;
   --radiobg-color: #40d3dc;
   --page-color: #c42632;
+  --grey: #d2d6cd;
 }
 
 * {
@@ -23,6 +24,7 @@
 
 body {
   min-height: 100vh;
+  /* min-width: 100vw; */
   color: var(--text-color);
 }
 
@@ -37,6 +39,7 @@ header {
 .sticky {
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
   z-index: 100; /* Header alanının ön planda kalmasını sağlar */
   transition: 0.5s;
@@ -44,84 +47,72 @@ header {
 /* Sayfa aşağıya doğru kaydırıldığında nav elementine eklenir*/
 .sticky-nav {
   background: rgba(255, 255, 255, 0.9);
-  /* padding: 0.8rem 8%; */
 }
 /* Sayfa aşağıya doğru kaydırıldığında main elementine eklenir*/
 .sticky-main {
-  padding-top: 137px;
+  padding-top: 118px;
 }
 
 .topbar {
   background: var(--bar-color);
   color: var(--white-color);
-
 }
-.topbar-box{
+.topbar-box {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: .8rem;
-  font-size: 11px;
+  padding: 0.7rem;
+  font-size: 10px;
   cursor: default;
 }
-.topbar-box > a{
+.topbar-box > a {
   color: var(--white-color);
-  font-size: 1.1rem;
+  font-size: 1rem;
   padding: 0.2rem 0 0 0.6rem;
 }
-.dropdown-topbar{
+.dropdown-topbar {
   position: relative;
   display: flex;
   gap: 5rem;
   justify-content: center;
   padding: 2rem 0 4rem 0;
 }
-.dropdown-topbar div{
+.dropdown-topbar div {
   width: 20%;
-  font-size: .8rem;
+  font-size: 0.9rem;
 }
-.dropdown-topbar div p{
+.dropdown-topbar div p {
   padding: 1rem 0 2rem 0;
+  font-size: 0.8rem;
 }
-.dropdown-topbar div a{
+.dropdown-topbar div a {
   color: var(--white-color);
   text-decoration: underline;
-} 
-#closeTopbarBtn{
- background: none;
- border: none;
- color: var(--white-color);
- font-size: 3rem;
- position: absolute;
- top: 16%;
- right: 4%;
- cursor: pointer;
 }
-
-.helpbar{
+.dropdown-topbar div a:hover {
+  color: #c5afaf;
+}
+#closeTopbarBtn {
+  background: none;
+  border: none;
+  color: var(--white-color);
+  font-size: 3rem;
   position: absolute;
-  top: 0;
-  right: 8%;
-  padding: 1.5rem 0;
-  
-}
-.helpbar > ul{
-  display: flex;
-  gap:1.5rem;
-  font-size: .8rem ;
-  font-weight: 300;
+  top: 16%;
+  right: 4%;
+  cursor: pointer;
 }
 
-nav{
+nav {
   position: relative;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  padding: 0rem 8% 1.5rem 8%;
+  padding: 1rem 8% 0 8%;
+  box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.5);
 }
-
-nav > a img{
-  padding:1.5rem 0 0 0;
+#logo{
+  align-self: center;
 }
 
 nav > ul {
@@ -132,26 +123,46 @@ nav > ul {
 nav > ul li a {
   color: var(--text-color);
   font-weight: 600;
+  position: relative;
 }
 nav > ul li a span {
   color: var(--span-color);
 }
 
-.open{
+#menu-items {
+  height: 2.5rem;
+}
+
+#menu-items > li > a:hover::before {
+  content: "";
+  position: absolute;
+  bottom: -1.2rem;
+  left: 0;
+  width: 100%;
+  height: 0.2rem;
+  background-color: black;
+}
+#outlet:hover::before {
+  background-color: red !important;
+}
+.dropdown > ul li a:hover {
+  text-decoration: underline;
+}
+.open {
   display: flex !important;
 }
 
-.dropdown {
+.dropdown-container {
   display: none;
   position: absolute;
   left: 0;
   width: 100%;
   background: var(--white-color);
-  border-top: 1px solid var(--bg-color);
+  border-top: 1px solid #e0e0e0;
   z-index: 100;
   align-items: center;
   justify-content: center;
-  margin-top: 2rem;
+  margin-top: 1.2rem;
 }
 .dropdown > ul {
   display: flex;
@@ -159,7 +170,7 @@ nav > ul li a span {
   padding: 3rem;
 }
 .dropdown > ul li a:not(.headline) {
-  font-size: .9rem;
+  font-size: 0.9rem;
   font-weight: 300;
   line-height: 1.7rem;
 }
@@ -170,39 +181,103 @@ nav > ul li a span {
 }
 
 .menu {
+  position: relative;
   display: flex;
-  align-items: center;
-  gap: 2rem;
-  font-size: 1.3rem;
+  align-items: flex-end;
+  justify-content: center;
+  flex-direction: column;
+}
+.helpbar {
+}
+.helpbar > ul {
+  display: flex;
+  font-size: 0.8rem;
+  font-weight: 300;
+}
+.helpbar > ul li {
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  line-height: 1.5rem;
+}
+.helpbar > ul li:last-child {
+  border:none;
+}
+.helpbar > ul li a {
+  color: var(--bg-color);
+  padding: 0 2rem;
+}
+.helpbar > ul li a:hover {
+  text-decoration: underline;
 }
 
-.menu a i {
+.user-bar{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  font-size: 1.4rem;
+  padding: .5rem 2rem;
+}
+.user-bar a i {
   color: var(--bg-color);
 }
 
 .search-box {
+  /* border: 2px solid green; */
   position: relative;
+  display: flex;
+  align-items: center;
+  height: 2.2rem;
+  width: 10.5rem;
+  border-radius: 3rem;
+  /* background: #cedbdb; */
+
+  padding: 2px 0; 
+
 }
 
 .search-box input[type="text"] {
+  position: relative;
+  width: 10rem;
+  height: 1.7rem;
+  padding: 0 2.5rem 0 1rem;
+  font-size: 1rem;
   border: none;
-  background: #d3d3d3;
-  line-height: 1.7rem;
-  padding: 0.2rem 3rem 0.2rem 1rem;
-  border-radius: 0.2rem;
+  /* border: 2px solid blue; */
+  border-radius: .5rem;
+  background: #f0ffff;
   outline: none;
+  box-shadow: .5px .5px 5px black;
+}
+.search-box input::placeholder {
+  font-size: 1rem;
+  /* padding-left: 0.5rem; */
+  font-family: "Lexend Exa";
+  font-weight: 200;
 }
 
 a#searchIcon,
 a#closeIcon {
   position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
+  height: 2.2rem;
+  right: 0rem;
   display: flex;
   align-items: center;
-  padding: 0 1rem;
   cursor: pointer;
+  background: var(--bg-color);
+  /* border: 1px solid red; */
+  border-radius: 50%;
+  padding: .3rem .7rem;
+  font-size: 1.2rem;
+  opacity: 1;
+  box-shadow: .5px .5px 5px black;
+}
+#searchIcon > i,
+#closeIcon > i{
+  color: white;
+}
+#searchIcon:hover,
+#closeIcon:hover{
+  opacity: 0.5;
 }
 
 /* slider alanı */
@@ -271,4 +346,120 @@ a#closeIcon {
 
 #next-btn {
   right: 3rem;
+}
+
+/* cards */
+
+.categories {
+  overflow-x: hidden;
+}
+.head-and-cards {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.head-and-cards h2 {
+  padding: 2rem 0;
+  width: 85%;
+  font-size: 1.8rem;
+}
+.cards {
+  width: 85%;
+  display: flex;
+  gap: 2rem;
+}
+.card {
+  min-width: calc(33% - 1.2rem);
+  cursor:pointer;
+}
+.img-container {
+  overflow: hidden;
+}
+.card img {
+  width: 100%;
+  vertical-align: middle;
+  transition: transform 0.3s ease;
+}
+.card p {
+  display: flex;
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 0.5rem 0;
+  flex-direction: column;
+}
+.card img:hover {
+  transform: scale(1.2);
+}
+
+/* sneaker collapse */
+.sneaker-collapse {
+  max-width: 100%;
+  height: auto;
+  padding: 3rem;
+}
+.sneaker-collapse-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.sneaker-header {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1% 1%;
+}
+.sneaker-header h2 {
+  padding: 1rem 0;
+  font-size: 1.8rem;
+}
+.sneaker-slider-buttons {
+  margin: 0 2% 0 auto;
+}
+.sneaker-slider-buttons > a {
+  font-size: 1.5rem;
+  margin: 0 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(202, 202, 202, 0.6);
+  border-radius: 50%;
+  color: var(--bg-color);
+}
+.sneaker-slider-buttons > a:hover {
+  background: rgba(202, 202, 202, 1);
+}
+.sneaker-cards {
+  /* border: 2px solid green; */
+  height: auto;
+  max-width: 90%;
+  display: flex;
+  overflow-x: hidden;
+  /* padding: 0 1%; */
+}
+.sneaker-card {
+  position: relative;
+  min-width: calc(33.3% + .51px);
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: center;
+  padding: 0 1%;
+  transition: transform 0.3s ease;
+  /* box-shadow: .5rem .5rem 20rem rgba(161, 104, 104, 0.8); */
+}
+.sneaker-card img {
+  border: 1px solid black;
+  width: 100%;
+}
+.sneaker-card p {
+  position: absolute;
+  bottom: 0;
+  background: var(--white-color);
+  padding: 0.5rem 1rem;
+  border-width: 1px 1px 0 1px;
+  border-style: solid;
+  border-color: black;
 }

@@ -1,0 +1,38 @@
+{
+  "menu": [
+    {
+      "man": {
+        "Öne Çıkanlar": ["Yeni Sezon", "Kışlık Giyim", "En Çok Satanlar"],
+        "Ayakkabı": ["Günlük", "Koşu", "Futbol", "Basketbol", "Kaykay", "Tenis", "Sandalet", "Terlik"],
+        "Giyim": ["Tshirt", "Sweatshirt", "Kapüşonlu Üst", "Eşofman", "Mont", "Forma", "Şort", "Mayo"],
+        "Aksesuar": ["Bel Çantaları", "Sırt Çantaları", "Şapka ve Bere", "Eldiven", "Atkı ve Boyunluk", "Çorap"]
+      }
+    },
+    {
+      "women": {
+        "Öne Çıkanlar": ["Yeni Sezon", "Kışlık Giyim", "En Çok Satanlar", "Borayas Special"],
+        "Ayakkabı": ["Günlük", "Koşu", "Futbol", "Dans", "Antrenman ve Spor Salonu", "Kaykay", "Tenis", "Sandalet", "Terlik"],
+        "Giyim": ["Tshirt", "Sweatshirt", "Kapüşonlu Üst", "Eşofman", "Mont", "Sporcu Sütyeni", "Elbise", "Etek", "Tayt", "Şort", "Bikini ve Mayo"],
+        "Aksesuar": ["Bel Çantaları", "Sırt Çantaları", "Şapka ve Bere", "Saç Bandı", "Eldiven", "Atkı ve Boyunluk", "Çorap"]
+      }
+    },
+    {
+      "kid": {
+        "Öne Çıkanlar": ["Yeni Sezon", "Kışlık Giyim", "En Çok Satanlar", "Çocuklara Özel Sınırlı Üretim"],
+        "Genç (8-14 Yaş)": ["Erkek Giyim", "Kız Giyim", "Erkek Ayakkabı", "Kız Ayakkabı", "İndirim"],
+        "Çocuk (4-8 Yaş)": ["Erkek Giyim", "Kız Giyim", "Erkek Ayakkabı", "Kız Ayakkabı", "İndirim"],
+        "Bebek(0-4 Yaş)": ["Giyim", "Ayakkabı", "İndirim"],
+        "Koleksiyonlar": ["Lorem", "Ipsum", "Dolor", "Sit", "Amet"]
+      }
+    },
+    {
+      "outlet": {
+        "Öne Çıkanlar": ["Yeni Sezon", "Kışlık Giyim", "En Çok Satanlar", "Çocuklara Özel Sınırlı Üretim"],
+        "Erkek": ["Outlet Giyim", "Outlet Ayakkabı", "Outlet Aksesuar"],
+        "Kadın": ["Outlet Giyim", "Outlet Ayakkabı", "Outlet Aksesuar"],
+        "Çocuk": ["Outlet Giyim", "Outlet Ayakkabı"],
+        "Koleksiyonlar": ["Lorem", "Ipsum", "Dolor", "Sit", "Amet"]
+      }
+    }
+  ]
+}
