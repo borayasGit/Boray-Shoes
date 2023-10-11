@@ -7,7 +7,7 @@ $(document).ready(function () {
     url: dbUrl,
     dataType: "json",
   }).done(function (data) {
-    const navbarAnchor = $("#menu-items li a");
+    const navbarAnchor = $(".navList-item");
 
     navbarAnchor.each(function (index, element) {
       var menuId = $(element).data("menu");
@@ -43,17 +43,23 @@ $(document).ready(function () {
     return content;
   }
   //hover
-  const navbar = $("#menu-items li a");
+  const navbar = $(".navList-item");
+  const dropdownContainers = $(".dropdown-container");
+  dropdownContainers.hide();
   navbar.mouseover(function () {
     var menuId = $(this).data("menu");
     var menuIdSelector = $(`#${menuId}`);
     const dropdownContainer = menuIdSelector.siblings(".dropdown-container");
+    // const dropdownUl = dropdownContainer.find(".dropdown");
     dropdownContainer.addClass("open");
+    // dropdownUl.css("opacity", "1").css("transition", "opacity 2s ease");
   });
-  const headerAndNav = $("header, nav ul li");
+  const headerAndNav = $(".dropdown-container, .navList > ul li");
   headerAndNav.mouseleave(function () {
-    const dropdownContainers = $(".dropdown-container");
+    // const dropdownContainers = $(".dropdown-container");
+    const dropdownUl = dropdownContainers.find(".dropdown");
     dropdownContainers.removeClass("open");
+    // dropdownUl.css("opacity", "0");
   });
 
   // Sticky Header Alanı
@@ -279,10 +285,10 @@ $(document).ready(function () {
   // console.log(div1.position().left);
   console.log("İlk kartın mesafesi: " + distance + " px");
 
-// Ana div'in sağ kenarının konumu
-const anadivRight = anadiv.offset().left + anadiv.outerWidth();
+  // Ana div'in sağ kenarının konumu
+  const anadivRight = anadiv.offset().left + anadiv.outerWidth();
 
-// Üçüncü kartın sağ kenarının konumu
-const div3Right = div3.offset().left + div3.outerWidth();
-console.log("Üçüncü kartın mesafesi: " + (anadivRight - div3Right) + " px");
+  // Üçüncü kartın sağ kenarının konumu
+  const div3Right = div3.offset().left + div3.outerWidth();
+  console.log("Üçüncü kartın mesafesi: " + (anadivRight - div3Right) + " px");
 });
