@@ -84,28 +84,48 @@ $(document).ready(function () {
   const topbar = $(".topbar");
   const topbarBox = $(".topbar-box");
   const dropdownTopbar = $(".dropdown-topbar");
+  const dropdownTopbarCard = $(".dropdown-topbar-card");
   const topbarIcon = $("i.fa-angle-down");
 
   dropdownTopbar.hide();
   topbar.click(function (e) {
     e.preventDefault();
     if (!dropdownTopbar.is(":visible")) {
+      //Topbar açıldığında sayfanın aşağıya kaydırılmasını engelliyor
+      $("body").css("overflow", "hidden");
+      // .slider harici tüm maine filter uyguluyor
+      $("main:not(.slider)").css("filter", "blur(2px) brightness(80%)");
+
       topbarBox.css({
         visibility: "hidden",
         transform: "translateX(-60%)",
       });
-      dropdownTopbar.slideDown(700);
+
+      dropdownTopbar.slideDown(200, function () {
+        dropdownTopbarCard.css({
+          opacity: "1",
+          transition: "opacity 1s ease",
+        });
+      });
     }
   });
 
   const closeTopbarBtn = $("#closeTopbarBtn");
   closeTopbarBtn.click(function () {
-    dropdownTopbar.slideUp(700, function () {
+    dropdownTopbar.slideUp(400, function () {
       topbarBox.css({
         visibility: "visible",
         transform: "translateX(0)",
         transition: "transform .6s ease",
       });
+
+      dropdownTopbarCard.css({
+        opacity: "0",
+        transition: "opacity .1s ease",
+      });
+
+      $("main:not(.slider)").css("filter", "none");
+      $("body").css("overflow", "auto");
     });
   });
 
